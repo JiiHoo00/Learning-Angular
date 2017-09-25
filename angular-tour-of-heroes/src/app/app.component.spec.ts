@@ -44,4 +44,11 @@ describe('AppComponent', () => {
     expect(app.heroes[0].name).toEqual('Mr. Nice');
     expect(app.heroes[0].id).toEqual(11);
   }));
+  it('should render heroes data in a list', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('span').textContent).toContain(11);
+    expect(compiled.querySelector('li').textContent).toContain('Mr. Nice');
+  }));
 });
