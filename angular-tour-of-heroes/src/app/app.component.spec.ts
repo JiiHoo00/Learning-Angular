@@ -28,14 +28,6 @@ describe('AppComponent', () => {
     expect(app.hero.id).toEqual(1);
     expect(app.hero.name).toEqual('Windstorm');
   }));
-  it('should render Heroes details in labels', async(() => {
-    this.fixture.detectChanges();
-    this.fixture.whenStable().then(() => {
-      const compiled = this.fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('div').textContent).toContain('id: 1');
-      expect(compiled.querySelector('input').value).toBe('Windstorm');
-    });
-  }));
   it('should have hero data-array, with ten heroes', async(() => {
     const app = this.fixture.debugElement.componentInstance;
     expect(app.heroes.length).toEqual(10);
