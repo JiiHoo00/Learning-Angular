@@ -33,9 +33,11 @@ describe('AppComponent', () => {
   it('should render Heroes details in labels', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('div').textContent).toContain('id: 1');
-    expect(compiled.querySelector('div').textContent).toContain('Windstorm');
+    fixture.whenStable().then(() => {
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('div').textContent).toContain('id: 1');
+      expect(compiled.querySelector('input').value).toBe('Windstorm');
+    });
   }));
   it('should have hero data-array, with ten heroes', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
