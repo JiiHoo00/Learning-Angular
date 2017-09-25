@@ -30,7 +30,7 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h2').textContent).toContain('Windstorm details!');
   }));
-  it('should have hero class, with id and name', async(() => {
+  it('should have hero object, with id and name', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.hero.id).toEqual(1);
@@ -42,5 +42,12 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('div').textContent).toContain('id: 1');
     expect(compiled.querySelector('div').textContent).toContain('Windstorm');
+  }));
+  it('should have hero data-array, with ten heroes', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.heroes.length).toEqual(10);
+    expect(app.heroes[0].name).toEqual('Mr. Nice');
+    expect(app.heroes[0].id).toEqual(11);
   }));
 });
