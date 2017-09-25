@@ -4,7 +4,8 @@
   </h1>
   <h2>My Heroes</h2>
   <ul class="heroes">
-    <li *ngFor="let hero of heroes">
+    <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+      <!-- (event) binding allows the component to call functions when the DOM event is triggered -->
       <span class="badge">{{hero.id}}</span> {{hero.name}} 
       <!-- {{interpolation binding}} looks for the component's attribute and displays the value of the attribute  -->
     </li>

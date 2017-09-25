@@ -60,4 +60,14 @@ describe('AppComponent', () => {
       expect(compiled.querySelector('input').value).toBe('Mr. Nice');
     });
   }));
+  it('should show clicked hero\'s details', async(() => {
+    this.fixture.detectChanges();
+    const compiled = this.fixture.debugElement.nativeElement;
+    compiled.querySelector('.badge').click();
+    this.fixture.detectChanges();
+    this.fixture.whenStable().then(() => {
+      const compiledAfterClick = this.fixture.debugElement.nativeElement;
+      expect(compiledAfterClick.querySelector('input').value).toBe('Mr. Nice');
+    });
+  }));
 });
