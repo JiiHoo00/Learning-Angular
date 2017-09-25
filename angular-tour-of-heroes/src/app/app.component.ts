@@ -43,7 +43,7 @@ export class AppComponent {
     name : 'Windstorm',
   };
   heroes = HEROES;
-  selectedHero: Hero = this.hero;
+  selectedHero: Hero;
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
