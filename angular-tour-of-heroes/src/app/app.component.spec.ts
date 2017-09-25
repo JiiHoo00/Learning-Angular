@@ -62,4 +62,14 @@ describe('AppComponent', () => {
       expect(compiledAfterClick.querySelectorAll('input')[0].value).toBe('Mr. Nice');
     });
   }));
+  it('should apply css class selected to the selected hero', async(() => {
+    this.fixture.detectChanges();
+    const compiled = this.fixture.debugElement.nativeElement;
+    compiled.querySelectorAll('.badge')[0].click();
+    this.fixture.detectChanges();
+    this.fixture.whenStable().then(() => {
+      const compiledAfterClick = this.fixture.debugElement.nativeElement;
+      expect(compiledAfterClick.querySelectorAll('li')[0].className).toContain('selected');
+    });
+  }));
 });
