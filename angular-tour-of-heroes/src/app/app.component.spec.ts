@@ -55,11 +55,11 @@ describe('AppComponent', () => {
   it('should show clicked hero\'s details', async(() => {
     this.fixture.detectChanges();
     const compiled = this.fixture.debugElement.nativeElement;
-    compiled.querySelector('.badge').click();
+    compiled.querySelectorAll('.badge')[0].click();
     this.fixture.detectChanges();
     this.fixture.whenStable().then(() => {
       const compiledAfterClick = this.fixture.debugElement.nativeElement;
-      expect(compiledAfterClick.querySelector('input').value).toBe('Mr. Nice');
+      expect(compiledAfterClick.querySelectorAll('input')[0].value).toBe('Mr. Nice');
     });
   }));
 });
