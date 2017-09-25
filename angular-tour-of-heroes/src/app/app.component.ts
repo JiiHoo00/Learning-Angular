@@ -19,7 +19,20 @@ const HEROES: Hero[] = [
   { id: 19, name: 'Magma' },
   { id: 20, name: 'Tornado' }
 ];
+/*
+ @Component is one form of Angular's directive
+ Component has typescript code like all directives, but it also contains
+ a template (either in the .ts-file or as a separate template .html file)
+ with an optional stylesheet (also in .ts or a separate .css ) for the view
 
+ Other forms of Angular's directive are:
+ 1) modifying the elements of the DOM (also known as attribute directive: https://angular.io/guide/attribute-directives)
+ 2) modifying DOM structure itself (see: https://angular.io/guide/structural-directives
+
+  All versions of the directives can be used either
+  by using ready made directives (like *ngIf and ngModel)
+  or by extending @Directive create custom directives
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
