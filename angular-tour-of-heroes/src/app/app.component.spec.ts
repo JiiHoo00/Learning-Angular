@@ -53,4 +53,17 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('span').textContent).toContain(11);
     expect(compiled.querySelector('li').textContent).toContain('Mr. Nice');
   }));
+  it('should show selected hero\'s details', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    app.selectedHero = {
+      id: 11,
+      name: 'Mr. Nice'
+    };
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('input').value).toBe('Mr. Nice');
+    });
+  }));
 });

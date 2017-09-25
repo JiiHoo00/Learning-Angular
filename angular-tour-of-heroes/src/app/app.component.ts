@@ -43,4 +43,5 @@ export class AppComponent {
     name : 'Windstorm',
   };
   heroes = HEROES;
+  selectedHero: Hero = this.hero;
 }
