@@ -31,6 +31,7 @@ describe('AppComponent', () => {
     expect(app.hero.name).toEqual('Windstorm');
   }));
   it('should have hero data-array, with ten heroes', async(() => {
+    this.fixture.detectChanges(); // this causes the ngOnInit to run in the component
     const app = this.fixture.debugElement.componentInstance;
     expect(app.heroes.length).toEqual(10);
     expect(app.heroes[0].name).toEqual('Mr. Nice');
