@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
+import { HEROES } from './mock-heroes';
+
 import { HeroService } from './hero.service';
 
 describe('AppComponent', () => {
@@ -23,6 +25,11 @@ describe('AppComponent', () => {
       ]
     }).compileComponents();
     this.fixture = TestBed.createComponent(AppComponent);
+
+    this.heroService = this.fixture.debugElement.injector.get(HeroService);
+    spyOn(this.heroService, 'getHeroes').and.callFake(() => {
+      return Promise.resolve(HEROES);
+    });
     this.fixture.detectChanges(); // makes sure that the ngOnInit is run in the component, so that the data is loaded
   }));
   it('should create the app', async(() => {
