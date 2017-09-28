@@ -2,17 +2,24 @@ import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+
+import { HeroService } from './hero.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        HeroesComponent,
         HeroDetailComponent
       ],
       imports: [
         FormsModule
+      ],
+      providers: [
+        HeroService
       ]
     }).compileComponents();
     this.fixture = TestBed.createComponent(AppComponent);
@@ -26,20 +33,6 @@ describe('AppComponent', () => {
     const app = this.fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Tour of Heroes');
   }));
-  it('should have hero object, with id and name', async(() => {
-    const app = this.fixture.debugElement.componentInstance;
-    expect(app.hero.id).toEqual(1);
-    expect(app.hero.name).toEqual('Windstorm');
-  }));
-  it('should have hero data-array, with ten heroes', async(() => {
-    this.fixture.whenStable().then(() => { // so that service has gotten the mock-data
-      const app = this.fixture.debugElement.componentInstance;
-      expect(app.heroes.length).toEqual(10);
-      expect(app.heroes[0].name).toEqual('Mr. Nice');
-      expect(app.heroes[0].id).toEqual(11);
-    });
-
-  }));
   it('should render heroes data in a list', async(() => {
     this.fixture.whenStable().then(() => { // so that service has gotten the mock-data
       this.fixture.detectChanges();
@@ -48,18 +41,6 @@ describe('AppComponent', () => {
       expect(compiled.querySelector('li').textContent).toContain('Mr. Nice');
     });
 
-  }));
-  it('should show selected hero\'s details', async(() => {
-    const app = this.fixture.debugElement.componentInstance;
-    app.selectedHero = {
-      id: 11,
-      name: 'Mr. Nice'
-    };
-    this.fixture.detectChanges();
-    this.fixture.whenStable().then(() => {
-      const compiled = this.fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('input').value).toBe('Mr. Nice');
-    });
   }));
   it('should show clicked hero\'s details', fakeAsync(() => { // not completely sure how this works, but this goes like this:
     this.fixture.detectChanges(); // updates the view to current situation
