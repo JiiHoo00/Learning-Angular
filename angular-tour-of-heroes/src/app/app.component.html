@@ -12,13 +12,5 @@
       <!-- {{interpolation binding}} looks for the component's attribute and displays the value of the attribute  -->
     </li>
   </ul>
-  <div *ngIf="selectedHero">
-    <h2>{{selectedHero.name}} details!</h2>
-    <div><label>id: </label>{{selectedHero.id}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="selectedHero.name" placeholder="name">
-    </div>
-    <!-- [(Two-way data binding)] ngModel is from FormsModule and allows updating the value between the view(html) and the model (component attribute). Can have validation by overriding ngOnChanges() -->
-  </div>
+  <app-hero-detail [hero]="selectedHero"></app-hero-detail>
 </div>
