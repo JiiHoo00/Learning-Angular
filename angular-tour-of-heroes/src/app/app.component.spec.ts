@@ -1,5 +1,7 @@
 import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
@@ -14,8 +16,16 @@ describe('AppComponent', () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [AppComponent, HeroesComponent, HeroDetailComponent],
-        imports: [FormsModule],
-        providers: [HeroService],
+        imports: [
+          FormsModule,
+          RouterModule.forRoot([
+            {
+              path: 'heroes',
+              component: HeroesComponent,
+            },
+          ]),
+        ],
+        providers: [HeroService, { provide: APP_BASE_HREF, useValue: '/' }],
       }).compileComponents();
       this.fixture = TestBed.createComponent(AppComponent);
 

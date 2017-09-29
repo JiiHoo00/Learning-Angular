@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 import { HeroesComponent } from './heroes/heroes.component';
 
@@ -6,7 +7,8 @@ import { HeroesComponent } from './heroes/heroes.component';
   selector: 'app-root',
   template: `
     <h1>{{ title }}!</h1>
-    <app-heroes-list></app-heroes-list>
+    <a routerLink="/heroes">Heroes</a>
+    <router-outlet></router-outlet>
     `,
   styles: [``],
 })
