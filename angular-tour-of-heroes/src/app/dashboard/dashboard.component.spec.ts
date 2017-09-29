@@ -3,6 +3,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { DashboardComponent } from './dashboard.component';
+import { HeroService } from '../hero.service';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -12,6 +13,7 @@ describe('DashboardComponent', () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [DashboardComponent],
+        providers: [HeroService],
       }).compileComponents();
     }),
   );

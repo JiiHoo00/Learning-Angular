@@ -11,7 +11,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroService } from './hero.service';
 
 @NgModule({
-  declarations: [AppComponent, HeroesComponent, HeroDetailComponent, DashboardComponent],
+  declarations: [
+    AppComponent,
+    HeroesComponent,
+    HeroDetailComponent,
+    DashboardComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -19,6 +24,15 @@ import { HeroService } from './hero.service';
       {
         path: 'heroes',
         component: HeroesComponent,
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path: '',
+        redirectTo: '/dashboard',
+        pathMatch: 'full',
       },
     ]),
   ],
