@@ -1,11 +1,12 @@
 import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
-
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { HeroesComponent } from './heroes.component';
 import { HeroService } from '../hero.service';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
-
+import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HEROES } from '../mock-heroes';
 
 describe('HeroesComponent', () => {
@@ -13,9 +14,34 @@ describe('HeroesComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [HeroesComponent, HeroDetailComponent],
-        imports: [FormsModule],
-        providers: [HeroService],
+        declarations: [
+          HeroesComponent,
+          HeroDetailComponent,
+          DashboardComponent,
+        ],
+        imports: [
+          FormsModule,
+          RouterModule.forRoot([
+            {
+              path: 'heroes',
+              component: HeroesComponent,
+            },
+            {
+              path: 'dashboard',
+              component: DashboardComponent,
+            },
+            {
+              path: 'detail/:id',
+              component: HeroDetailComponent,
+            },
+            {
+              path: '',
+              redirectTo: '/dashboard',
+              pathMatch: 'full',
+            },
+          ]),
+        ],
+        providers: [HeroService, { provide: APP_BASE_HREF, useValue: '/' }],
       }).compileComponents();
       this.fixture = TestBed.createComponent(HeroesComponent);
       this.heroService = this.fixture.debugElement.injector.get(HeroService);
@@ -79,7 +105,7 @@ describe('HeroesComponent', () => {
   );
 
   it(
-    'should show clicked hero\'s details',
+    "should show clicked hero's details",
     fakeAsync(() => {
       // not completely sure how this works, but I think this goes like this:
       this.fixture.detectChanges(); // updates the view for the start
