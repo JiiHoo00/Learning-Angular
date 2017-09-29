@@ -1,6 +1,6 @@
 {
   "rulesDirectory": [
-    "node_modules/codelyzer"
+    "./node_modules/codelyzer"
   ],
   "rules": {
     "arrow-return-shorthand": true,
@@ -126,6 +126,11 @@
       "app",
       "kebab-case"
     ],
+    "pipe-naming": [
+      true,
+      "camelCase",
+      "app"
+    ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,
@@ -137,6 +142,13 @@
     "directive-class-suffix": true,
     "no-access-missing-member": true,
     "templates-use-public": true,
-    "invoke-injectable": true
+    "invoke-injectable": true,
+    "angular-whitespace": [true, "check-interpolation", "check-pipe"],
+    "banana-in-box": true,
+    "templates-no-negated-async": true,
+    "no-attribute-parameter-decorator": true,
+    "no-forward-ref": true,
+    "use-view-encapsulation": true,
+    "template-to-ng-template": true
   }
 }

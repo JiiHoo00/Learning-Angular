@@ -1,19 +1,14 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {
-    HeroesComponent
-} from './heroes/heroes.component';
+import { HeroesComponent } from './heroes/heroes.component';
 
 @Component({
   selector: 'app-root',
   template: `
-    <h1>{{title}}!</h1>
+    <h1>{{ title }}!</h1>
     <app-heroes-list></app-heroes-list>
     `,
-  styles: [``]
+  styles: [``],
 })
 export class AppComponent implements OnInit {
   title = 'Tour of Heroes';

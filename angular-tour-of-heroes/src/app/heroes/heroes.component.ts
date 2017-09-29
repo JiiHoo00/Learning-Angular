@@ -20,17 +20,17 @@ import { HeroService } from '../hero.service';
 @Component({
   selector: 'app-heroes-list',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  styleUrls: ['./heroes.component.css'],
 })
 export class HeroesComponent implements OnInit {
   hero: Hero = {
-    id : 1,
-    name : 'Windstorm',
+    id: 1,
+    name: 'Windstorm',
   };
   heroes: Hero[];
   selectedHero: Hero;
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService) {}
 
   ngOnInit(): void {
     this.getHeroes();
@@ -41,6 +41,8 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    this.heroService.getHeroes().then(heroes => {
+      this.heroes = heroes;
+    });
   }
 }
