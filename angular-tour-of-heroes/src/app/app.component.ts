@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 import { HeroesComponent } from './heroes/heroes.component';
@@ -12,9 +12,7 @@ import { HeroesComponent } from './heroes/heroes.component';
     `,
   styles: [``],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Tour of Heroes';
   constructor() {}
-
-  ngOnInit() {}
 }
