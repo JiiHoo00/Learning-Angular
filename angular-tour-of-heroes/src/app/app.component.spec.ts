@@ -40,32 +40,5 @@ describe('AppComponent', () => {
     const app = this.fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Tour of Heroes');
   }));
-  it('should render heroes data in a list', async(() => {
-    this.fixture.whenStable().then(() => { // so that service has gotten the mock-data
-      this.fixture.detectChanges();
-      const compiled = this.fixture.debugElement.nativeElement;
-      expect(compiled.querySelector('span').textContent).toContain(11);
-      expect(compiled.querySelector('li').textContent).toContain('Mr. Nice');
-    });
 
-  }));
-  it('should show clicked hero\'s details', fakeAsync(() => { // not completely sure how this works, but this goes like this:
-    this.fixture.detectChanges(); // updates the view to current situation
-    const compiled = this.fixture.debugElement.nativeElement;
-    compiled.querySelectorAll('.badge')[0].click(); // clicks the hero
-    this.fixture.detectChanges(); // updates the view, so that the click is detected
-    tick(); // ticks the time forward
-    this.fixture.detectChanges(); // updates the view to current situation
-    const compiledAfterClick = this.fixture.debugElement.nativeElement;
-    expect(compiledAfterClick.querySelectorAll('input')[0].value).toBe('Mr. Nice');
-  }));
-  it('should apply css class selected to the selected hero', fakeAsync(() => {
-    this.fixture.detectChanges();
-    const compiled = this.fixture.debugElement.nativeElement;
-    compiled.querySelectorAll('.badge')[0].click();
-    tick();
-    this.fixture.detectChanges();
-    const compiledAfterClick = this.fixture.debugElement.nativeElement;
-    expect(compiledAfterClick.querySelectorAll('li')[0].className).toContain('selected');
-  }));
 });
