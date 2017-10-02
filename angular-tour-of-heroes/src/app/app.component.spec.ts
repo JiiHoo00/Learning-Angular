@@ -2,6 +2,7 @@ import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
@@ -24,6 +25,7 @@ describe('AppComponent', () => {
               component: HeroesComponent,
             },
           ]),
+          HttpModule,
         ],
         providers: [HeroService, { provide: APP_BASE_HREF, useValue: '/' }],
       }).compileComponents();

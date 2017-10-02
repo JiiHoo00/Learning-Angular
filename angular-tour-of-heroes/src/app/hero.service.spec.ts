@@ -1,3 +1,4 @@
+import { HttpModule } from '@angular/http';
 import { TestBed, inject } from '@angular/core/testing';
 
 import { HeroService } from './hero.service';
@@ -6,6 +7,7 @@ import { HEROES } from './mock-heroes';
 describe('HeroService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpModule],
       providers: [HeroService],
     });
   });
