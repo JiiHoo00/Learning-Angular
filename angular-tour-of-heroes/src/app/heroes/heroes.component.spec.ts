@@ -9,6 +9,8 @@ import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HEROES } from '../mock-heroes';
 
+import { AppRoutingModule } from '../app-routing.module.ts.routing';
+
 describe('HeroesComponent', () => {
   // synchronous beforeEach
   beforeEach(
@@ -21,25 +23,7 @@ describe('HeroesComponent', () => {
         ],
         imports: [
           FormsModule,
-          RouterModule.forRoot([
-            {
-              path: 'heroes',
-              component: HeroesComponent,
-            },
-            {
-              path: 'dashboard',
-              component: DashboardComponent,
-            },
-            {
-              path: 'detail/:id',
-              component: HeroDetailComponent,
-            },
-            {
-              path: '',
-              redirectTo: '/dashboard',
-              pathMatch: 'full',
-            },
-          ]),
+          AppRoutingModule,
         ],
         providers: [HeroService, { provide: APP_BASE_HREF, useValue: '/' }],
       }).compileComponents();
@@ -115,8 +99,8 @@ describe('HeroesComponent', () => {
       tick(); // ticks the time forward
       this.fixture.detectChanges(); // updates the view show changes caused by the click
       const compiledAfterClick = this.fixture.debugElement.nativeElement;
-      expect(compiledAfterClick.querySelectorAll('input')[0].value).toBe(
-        'Mr. Nice',
+      expect(compiledAfterClick.querySelectorAll('h2')[1].textContent).toContain(
+        'Mr. Nice'.toUpperCase(),
       );
     }),
   );
