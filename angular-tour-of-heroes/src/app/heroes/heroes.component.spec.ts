@@ -105,7 +105,7 @@ describe('HeroesComponent', () => {
   );
 
   it(
-    "should show clicked hero's details",
+    'should show clicked hero´s details',
     fakeAsync(() => {
       // not completely sure how this works, but I think this goes like this:
       this.fixture.detectChanges(); // updates the view for the start
