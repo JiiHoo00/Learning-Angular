@@ -6,4 +6,5 @@
     <input [(ngModel)]="hero.name" placeholder="name">
   </div>
   <!-- [(Two-way data binding)] ngModel is from FormsModule and allows updating the value between the view(html) and the model (component attribute). Can have validation by overriding ngOnChanges() -->
+  <button (click)="goBack()">Back</button>
 </div>
