@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { HeroesComponent } from './heroes/heroes.component';
 
@@ -9,11 +9,11 @@ import { HeroesComponent } from './heroes/heroes.component';
     <h1>{{ title }}!</h1>
     <nav>
     <a routerLink="/dashboard">Dashboard</a>
-    <a routerLink="/heroes">Heroes</a>
+    <a routerLink="/heroes" RouterLinkActive="active">Heroes</a>
     </nav>
     <router-outlet></router-outlet>
     `,
-  styles: [``],
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'Tour of Heroes';
