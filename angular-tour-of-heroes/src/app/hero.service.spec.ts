@@ -3,6 +3,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { HeroService } from './hero.service';
 import { HEROES } from './mock-heroes';
+import { Hero } from './hero';
 
 describe('HeroService', () => {
   beforeEach(() => {
@@ -28,5 +29,20 @@ describe('HeroService', () => {
         }),
       ).toBeTruthy();
     }),
+  );
+
+  it('should update hero details',
+    inject([HeroService], (service: HeroService) => {
+      let hero: Hero;
+      service.getHero(0).then(result => {
+        hero = result;
+        hero.name += 'n';
+        service.update(hero);
+        service.getHero(0).then(updatedResult => {
+          hero = updatedResult;
+          expect(hero.name === 'Zeron');
+        });
+      });
+    })
   );
 });
