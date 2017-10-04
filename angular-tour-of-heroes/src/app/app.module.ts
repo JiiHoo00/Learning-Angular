@@ -12,7 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroService } from './hero.service';
 import { InMemoryDataService } from './in-memory-data.service';
 
-import { AppRoutingModule } from './app-routing.module.ts.routing';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [

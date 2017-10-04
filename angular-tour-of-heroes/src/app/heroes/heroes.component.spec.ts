@@ -10,7 +10,7 @@ import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HEROES } from '../mock-heroes';
 
-import { AppRoutingModule } from '../app-routing.module.ts.routing';
+import { AppRoutingModule } from '../app-routing.module';
 
 describe('HeroesComponent', () => {
   // synchronous beforeEach
