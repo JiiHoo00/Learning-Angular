@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 
+import { InMemoryDataService } from '../in-memory-data.service';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+
 import { HeroesComponent } from './heroes.component';
 import { HeroService } from '../hero.service';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
@@ -26,14 +29,15 @@ describe('HeroesComponent', () => {
           FormsModule,
           AppRoutingModule,
           HttpModule,
+          InMemoryWebApiModule.forRoot(InMemoryDataService),
         ],
         providers: [HeroService, { provide: APP_BASE_HREF, useValue: '/' }],
       }).compileComponents();
       this.fixture = TestBed.createComponent(HeroesComponent);
       this.heroService = this.fixture.debugElement.injector.get(HeroService);
-      spyOn(this.heroService, 'getHeroes').and.callFake(() => {
-        return Promise.resolve(HEROES);
-      });
+      // spyOn(this.heroService, 'getHeroes').and.callFake(() => {
+      //   return Promise.resolve(HEROES);
+      // });
 
       this.component = this.fixture.componentInstance;
       this.fixture.detectChanges(); // trigger initial data binding
@@ -55,9 +59,9 @@ describe('HeroesComponent', () => {
       this.fixture.whenStable().then(() => {
         // so that service has gotten the mock-data
         const app = this.fixture.debugElement.componentInstance;
-        expect(app.heroes.length).toEqual(10);
-        expect(app.heroes[0].name).toEqual('Mr. Nice');
-        expect(app.heroes[0].id).toEqual(11);
+        expect(app.heroes.length).toEqual(11);
+        expect(app.heroes[0].name).toEqual('Zero');
+        expect(app.heroes[0].id).toEqual(0);
       });
     }),
   );
@@ -84,8 +88,8 @@ describe('HeroesComponent', () => {
         // so that service has gotten the mock-data
         this.fixture.detectChanges();
         const compiled = this.fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('span').textContent).toContain(11);
-        expect(compiled.querySelector('li').textContent).toContain('Mr. Nice');
+        expect(compiled.querySelector('span').textContent).toContain(0);
+        expect(compiled.querySelector('li').textContent).toContain('Zero');
       });
     }),
   );
@@ -101,9 +105,9 @@ describe('HeroesComponent', () => {
       tick(); // ticks the time forward
       this.fixture.detectChanges(); // updates the view show changes caused by the click
       const compiledAfterClick = this.fixture.debugElement.nativeElement;
-      expect(compiledAfterClick.querySelectorAll('h2')[1].textContent).toContain(
-        'Mr. Nice'.toUpperCase(),
-      );
+      expect(
+        compiledAfterClick.querySelectorAll('h2')[1].textContent,
+      ).toContain('Zero'.toUpperCase());
     }),
   );
 });

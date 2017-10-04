@@ -4,6 +4,9 @@ import { DebugElement } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from '../in-memory-data.service';
+
 import { DashboardComponent } from './dashboard.component';
 import { HeroService } from '../hero.service';
 
@@ -14,7 +17,11 @@ describe('DashboardComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        imports: [RouterModule, HttpModule],
+        imports: [
+          RouterModule,
+          HttpModule,
+          InMemoryWebApiModule.forRoot(InMemoryDataService),
+        ],
         declarations: [DashboardComponent],
         providers: [HeroService],
       }).compileComponents();

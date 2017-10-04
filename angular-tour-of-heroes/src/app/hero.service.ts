@@ -21,7 +21,7 @@ export class HeroService {
   }
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for testing
+    console.error('HeroService: An error occurred', error); // for testing
     return Promise.reject(error.message || error);
   }
 

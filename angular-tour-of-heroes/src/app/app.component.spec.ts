@@ -4,6 +4,9 @@ import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
@@ -26,15 +29,16 @@ describe('AppComponent', () => {
             },
           ]),
           HttpModule,
+          InMemoryWebApiModule.forRoot(InMemoryDataService),
         ],
         providers: [HeroService, { provide: APP_BASE_HREF, useValue: '/' }],
       }).compileComponents();
       this.fixture = TestBed.createComponent(AppComponent);
 
       this.heroService = this.fixture.debugElement.injector.get(HeroService);
-      spyOn(this.heroService, 'getHeroes').and.callFake(() => {
-        return Promise.resolve(HEROES);
-      });
+      // spyOn(this.heroService, 'getHeroes').and.callFake(() => {
+      //   return Promise.resolve(HEROES);
+      // });
       this.fixture.detectChanges(); // makes sure that the ngOnInit is run in the component, so that the data is loaded
     }),
   );
