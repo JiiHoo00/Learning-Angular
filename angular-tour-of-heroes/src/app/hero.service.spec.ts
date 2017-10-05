@@ -66,4 +66,24 @@ describe('HeroService', () => {
       }),
     ),
   );
+
+  it(
+    'should delete a hero',
+    async(
+      inject([HeroService], (service: HeroService) => {
+        let gotRejection = false;
+        service.getHero(0).then(heroToBeDeleted => {
+          expect(heroToBeDeleted).toBeTruthy();
+          service.delete(heroToBeDeleted.id).then(() => {
+            service.getHero(0).then(() => {
+              expect('to not be here').toEqual('but the hero wasn`t deleted');
+            }).catch(() => {
+              gotRejection = true;
+              expect(gotRejection).toBeTruthy();
+            });
+          });
+        });
+      }),
+    ),
+  );
 });
