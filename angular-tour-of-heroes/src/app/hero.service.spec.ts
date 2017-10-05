@@ -52,8 +52,18 @@ describe('HeroService', () => {
       }),
     ),
   );
-  // it(
-  //   'should create new hero',
-  //   inject([HeroService], (service: HeroService) => {}),
-  // );
+
+  it(
+    'should create new hero',
+    async(
+      inject([HeroService], (service: HeroService) => {
+        const heroName = 'TestHero';
+        service.create(heroName).then(newHero => {
+          service.getHero(newHero.id).then(newhero => {
+            expect(newhero.name).toEqual(heroName);
+          });
+        });
+      }),
+    ),
+  );
 });
