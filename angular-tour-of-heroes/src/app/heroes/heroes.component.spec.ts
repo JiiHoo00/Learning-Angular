@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 
-import { InMemoryDataService } from '../in-memory-data.service';
+import { InMemoryDataService } from '../services/in-memory-data.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { HeroesComponent } from './heroes.component';
-import { HeroService } from '../hero.service';
+import { HeroService } from '../services/hero.service';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HEROES } from '../mock-heroes';

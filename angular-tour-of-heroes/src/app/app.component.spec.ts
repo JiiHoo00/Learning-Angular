@@ -5,7 +5,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
@@ -13,7 +13,7 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 import { HEROES } from './mock-heroes';
 
-import { HeroService } from './hero.service';
+import { HeroService } from './services/hero.service';
 
 describe('AppComponent', () => {
   beforeEach(

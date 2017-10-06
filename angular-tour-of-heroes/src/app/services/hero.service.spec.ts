@@ -5,8 +5,8 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
 import { HeroService } from './hero.service';
-import { HEROES } from './mock-heroes';
-import { Hero } from './hero';
+import { HEROES } from '../mock-heroes';
+import { Hero } from '../hero';
 
 describe('HeroService', () => {
   beforeEach(() => {
@@ -75,12 +75,15 @@ describe('HeroService', () => {
         service.getHero(0).then(heroToBeDeleted => {
           expect(heroToBeDeleted).toBeTruthy();
           service.delete(heroToBeDeleted.id).then(() => {
-            service.getHero(0).then(() => {
-              expect('to not be here').toEqual('but the hero wasn`t deleted');
-            }).catch(() => {
-              gotRejection = true;
-              expect(gotRejection).toBeTruthy();
-            });
+            service
+              .getHero(0)
+              .then(() => {
+                expect('to not be here').toEqual('but the hero wasn`t deleted');
+              })
+              .catch(() => {
+                gotRejection = true;
+                expect(gotRejection).toBeTruthy();
+              });
           });
         });
       }),
