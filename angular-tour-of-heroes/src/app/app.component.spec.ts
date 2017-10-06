@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpModule } from '@angular/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
@@ -22,16 +23,11 @@ describe('AppComponent', () => {
         declarations: [AppComponent, HeroesComponent, HeroDetailComponent],
         imports: [
           FormsModule,
-          RouterModule.forRoot([
-            {
-              path: 'heroes',
-              component: HeroesComponent,
-            },
-          ]),
+          RouterTestingModule,
           HttpModule,
           InMemoryWebApiModule.forRoot(InMemoryDataService),
         ],
-        providers: [HeroService, { provide: APP_BASE_HREF, useValue: '/' }],
+        providers: [HeroService],
       }).compileComponents();
       this.fixture = TestBed.createComponent(AppComponent);
 

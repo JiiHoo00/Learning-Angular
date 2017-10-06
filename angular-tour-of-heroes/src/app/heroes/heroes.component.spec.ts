@@ -1,8 +1,7 @@
 import { HttpModule } from '@angular/http';
 import { TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { APP_BASE_HREF } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { InMemoryDataService } from '../services/in-memory-data.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -27,11 +26,11 @@ describe('HeroesComponent', () => {
         ],
         imports: [
           FormsModule,
-          AppRoutingModule,
           HttpModule,
           InMemoryWebApiModule.forRoot(InMemoryDataService),
+          RouterTestingModule,
         ],
-        providers: [HeroService, { provide: APP_BASE_HREF, useValue: '/' }],
+        providers: [HeroService],
       }).compileComponents();
       this.fixture = TestBed.createComponent(HeroesComponent);
       this.heroService = this.fixture.debugElement.injector.get(HeroService);
