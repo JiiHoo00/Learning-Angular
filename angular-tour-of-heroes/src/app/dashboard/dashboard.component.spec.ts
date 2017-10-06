@@ -9,6 +9,7 @@ import { InMemoryDataService } from '../services/in-memory-data.service';
 
 import { DashboardComponent } from './dashboard.component';
 import { HeroService } from '../services/hero.service';
+import { HeroSearchComponent } from '../hero-search/hero-search.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -22,7 +23,7 @@ describe('DashboardComponent', () => {
           HttpModule,
           InMemoryWebApiModule.forRoot(InMemoryDataService),
         ],
-        declarations: [DashboardComponent],
+        declarations: [DashboardComponent, HeroSearchComponent],
         providers: [HeroService],
       }).compileComponents();
     }),

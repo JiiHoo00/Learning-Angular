@@ -9,7 +9,6 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HeroesComponent } from './heroes.component';
 import { HeroService } from '../services/hero.service';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
-import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HEROES } from '../mock-heroes';
 
 import { AppRoutingModule } from '../app-routing.module';
@@ -22,7 +21,6 @@ describe('HeroesComponent', () => {
         declarations: [
           HeroesComponent,
           HeroDetailComponent,
-          DashboardComponent,
         ],
         imports: [
           FormsModule,
