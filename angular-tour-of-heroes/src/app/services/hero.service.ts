@@ -5,6 +5,15 @@ import 'rxjs/add/operator/toPromise';
 
 import { Hero } from '../hero';
 
+/*
+  Services provide something to the application, mostly application logic or data retrieval
+  for example data from an API or tax calculation for an order.
+  In this case we have an API, which contains the heroes (provided by in-memory-data.service) and HeroService does the data
+  retrieval from this API, by doing get and post requests in to certain URLs. Since the requests return an Observable
+  we change it to a promise, because we are expecting only one result per request.
+  The return values of the methods were always promises, so that the other components, which use this service, didn't have to change
+  when we switched from a data-array to a HTTP-service.
+*/
 @Injectable()
 export class HeroService {
   private heroesUrl = 'api/heroes';

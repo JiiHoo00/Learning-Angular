@@ -1,7 +1,10 @@
 <div id="search-component">
   <h4>Hero Search</h4>
   <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-  <div>
+  <div> <!-- | is a symbol for pipe. the pipe after it (usually) transforms the result of the expression on the left of the |.
+              for example 'someText | uppercase' changes the content of someText to all uppercase.
+              in this case however async means that the observable in the expression is subscribed to and when it changes,
+              it will mark this component to be checked for changes. -->
     <div *ngFor="let hero of heroes | async" (click)="gotoDetail(hero)" class="search-result">
       {{ hero.name }}
     </div>

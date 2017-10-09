@@ -27,7 +27,16 @@ export class HeroSearchComponent implements OnInit {
     private heroSearchService: HeroSearchService,
     private router: Router,
   ) {}
-
+  /*
+    RxJS offers functional reactive programming style to the application
+    in the search-function new search terms are added to the searchTerms stream
+    in ngOnInit, searchTerms is used to update the observable in heroes.
+    in reverse order:
+      - switchMap takes the newest event (search term) from the stream and searches the heroes with that term creating new observable
+        (empty term just returns an observable of an empty hero[] )
+      - distinctUntilChanged makes sure that switchmap isn't called unless searchterm has changed
+      - debounceTime adds delay to calling the switchmap, so that it doesn't run multiple times while user is writing.
+  */
   ngOnInit() {
     this.heroes = this.searchTerms
       .debounceTime(300)
