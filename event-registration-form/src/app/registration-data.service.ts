@@ -4,15 +4,21 @@ import { Registration } from './registration';
 
 @Injectable()
 export class RegistrationDataService {
-  private registrations = new Array<Registration>();
+  private dataKey = 'registrations';
 
   constructor() {}
 
   getRegistrations(): Registration[] {
-    return this.registrations;
+    const dataJSON = localStorage.getItem(this.dataKey);
+    if (dataJSON === null) {
+      return new Array<Registration>();
+    }
+    return JSON.parse(dataJSON);
   }
 
   addRegistration(registration: Registration): void {
-    this.registrations.push(registration);
+    const data: Registration[] = this.getRegistrations();
+    data.push(registration);
+    localStorage.setItem(this.dataKey, JSON.stringify(data));
   }
 }

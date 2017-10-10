@@ -8,6 +8,7 @@ describe('Service: RegistrationData', () => {
     TestBed.configureTestingModule({
       providers: [RegistrationDataService],
     });
+    localStorage.clear();
   });
 
   it(
@@ -36,7 +37,26 @@ describe('Service: RegistrationData', () => {
       };
       service.addRegistration(testEntry);
       const registrations = service.getRegistrations();
-      expect(registrations).toEqual([testEntry]);
+      expect(registrations).toEqual(new Array<Registration>(testEntry));
     }),
+  );
+
+  xit(
+    'should hold the data after restart, PENDING need to find a way to test', // Currently testing by manually restarting the application
+    inject(
+      [RegistrationDataService, RegistrationDataService],
+      (service: RegistrationDataService, service2: RegistrationDataService) => {
+        const testEntry: Registration = {
+          name: 'Test Tester',
+          email: 'test@test.com',
+          foodChoice: 'meat',
+          goingToSauna: true,
+        };
+        service.addRegistration(testEntry);
+        const dataBeforeRestart = service.getRegistrations();
+        // restart application/service
+        expect(service.getRegistrations()).toEqual(dataBeforeRestart);
+      },
+    ),
   );
 });
