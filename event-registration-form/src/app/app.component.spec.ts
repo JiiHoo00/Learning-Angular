@@ -1,10 +1,15 @@
 import { TestBed, async } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
+import { RegistrationFormComponent } from './registration-form/registration-form.component';
+
 describe('AppComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [AppComponent],
+        declarations: [AppComponent, RegistrationFormComponent],
+        imports: [FormsModule],
       }).compileComponents();
     }),
   );
@@ -35,5 +40,4 @@ describe('AppComponent', () => {
       );
     }),
   );
-
 });

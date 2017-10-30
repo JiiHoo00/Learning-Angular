@@ -1,0 +1,22 @@
+<div>
+  <form #registrationForm="ngForm">
+    <div>
+      <label>Name:</label>
+      <input type="text" id="name" required [(ngModel)]="registration.name" name="name">
+    </div>
+    <div>
+      <label>Email:</label>
+      <input type="text" id="email" required [(ngModel)]="registration.email" name="email">
+    </div>
+    <div>
+      <label>Food Choice:</label>
+      <select id="foodChoice" required [(ngModel)]="registration.foodChoice" name="foodChoice">
+        <option *ngFor="let choice of foodChoices" value="choice">{{choice}}</option>
+      </select>
+    </div>
+    <div>
+      <label>Going to sauna</label>
+      <input type="checkbox" id="goingToSauna" [(ngModel)]="registration.goingToSauna" name="goingToSauna">
+    </div>
+  </form>
+</div>
