@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { RegistrationDataService } from '../registration-data.service';
 
 import { Registration } from '../registration';
 
@@ -7,15 +9,18 @@ import { Registration } from '../registration';
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.css']
 })
-export class RegistrationFormComponent implements OnInit {
+export class RegistrationFormComponent {
 
   foodChoices = ['Meat', 'Fish', 'Vegetarian'];
 
-  registration = new Registration();
+  private registration = new Registration();
 
-  constructor() { }
+  constructor(private registrationService: RegistrationDataService ) {
 
-  ngOnInit() {
   }
 
+  onSubmit() {
+    this.registrationService.addRegistration(this.registration);
+    this.registration = new Registration();
+  }
 }

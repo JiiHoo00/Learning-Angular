@@ -1,5 +1,5 @@
 <div>
-  <form #registrationForm="ngForm">
+  <form (ngSubmit)="onSubmit()" #registrationForm="ngForm">
     <div>
       <label>Name:</label>
       <input type="text" id="name" required [(ngModel)]="registration.name" name="name">
@@ -11,12 +11,15 @@
     <div>
       <label>Food Choice:</label>
       <select id="foodChoice" required [(ngModel)]="registration.foodChoice" name="foodChoice">
-        <option *ngFor="let choice of foodChoices" value="choice">{{choice}}</option>
+        <option *ngFor="let choice of foodChoices" [value]="choice">{{choice}}</option>
       </select>
     </div>
     <div>
       <label>Going to sauna</label>
       <input type="checkbox" id="goingToSauna" [(ngModel)]="registration.goingToSauna" name="goingToSauna">
+    </div>
+    <div>
+      <button type="submit" [disabled]="!registrationForm.form.valid">Submit</button>
     </div>
   </form>
 </div>

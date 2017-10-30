@@ -3,6 +3,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { RegistrationDataService } from '../registration-data.service';
+
 import { RegistrationFormComponent } from './registration-form.component';
 
 describe('RegistrationFormComponent', () => {
@@ -14,6 +16,7 @@ describe('RegistrationFormComponent', () => {
       TestBed.configureTestingModule({
         declarations: [RegistrationFormComponent],
         imports: [FormsModule],
+        providers: [RegistrationDataService],
       }).compileComponents();
     }),
   );

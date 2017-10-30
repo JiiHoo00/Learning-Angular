@@ -4,12 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 
+import { RegistrationDataService } from './registration-data.service';
+
 describe('AppComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
         declarations: [AppComponent, RegistrationFormComponent],
         imports: [FormsModule],
+        providers: [RegistrationDataService],
       }).compileComponents();
     }),
   );
