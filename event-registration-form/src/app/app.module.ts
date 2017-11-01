@@ -14,6 +14,7 @@ import { BooleanToTextPipe } from './BooleanToText.pipe';
     AppComponent,
     RegistrationFormComponent,
     RegistrationListComponent,
+    BooleanToTextPipe,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [RegistrationDataService],

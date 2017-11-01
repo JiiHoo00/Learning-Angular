@@ -7,6 +7,7 @@ import { RegistrationDataService } from '../registration-data.service';
 import { Registration } from '../registration';
 
 import { RegistrationListComponent } from './registration-list.component';
+import { BooleanToTextPipe } from '../BooleanToText.pipe';
 
 describe('RegistrationListComponent', () => {
   let component: RegistrationListComponent;
@@ -15,7 +16,7 @@ describe('RegistrationListComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [RegistrationListComponent],
+        declarations: [RegistrationListComponent, BooleanToTextPipe],
         providers: [RegistrationDataService],
       }).compileComponents();
     })
@@ -55,9 +56,9 @@ describe('RegistrationListComponent', () => {
       expect(listElements[2].textContent).toEqual(testRegistration.email);
       expect(listElements[3].textContent).toEqual(testRegistration.foodChoice);
       if (testRegistration.goingToSauna) {
-        expect(listElements[4].textContent).toBeTruthy();
+        expect(listElements[4].textContent).toEqual('Yes');
       } else {
-        expect(listElements[4].textContent).toBeFalsy();
+        expect(listElements[4].textContent).toEqual('No');
       }
     })
   );
