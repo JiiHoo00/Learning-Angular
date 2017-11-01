@@ -1,8 +1,6 @@
 export class Registration {
-  constructor(
-    name?: string,
-    email?: string,
-    foodChoice?: string,
-    goingToSauna?: boolean,
-  ) {}
+    name: string;
+    email: string;
+    foodChoice: string;
+    goingToSauna: boolean;
 }

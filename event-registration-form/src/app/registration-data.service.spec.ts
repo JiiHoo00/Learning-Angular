@@ -37,7 +37,7 @@ describe('Service: RegistrationData', () => {
       };
       service.addRegistration(testEntry);
       const registrations = service.getRegistrations();
-      expect(registrations).toEqual(new Array<Registration>(testEntry));
+      expect(registrations).toContain(testEntry);
     })
   );
 

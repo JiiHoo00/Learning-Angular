@@ -13,7 +13,7 @@ export class RegistrationFormComponent {
 
   foodChoices = ['Meat', 'Fish', 'Vegetarian'];
 
-  private registration = new Registration();
+  registration = new Registration();
 
   constructor(private registrationService: RegistrationDataService ) {
 
