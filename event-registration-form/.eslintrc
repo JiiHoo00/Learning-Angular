@@ -17,6 +17,9 @@
     "computed-property-spacing": "off",
     "one-var-declaration-per-line": "off",
     "strict": "off",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "comma-dangle": ["error", {
+      "functions": "ignore"
+    }]
   }
 }

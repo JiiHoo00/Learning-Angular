@@ -14,7 +14,7 @@ describe('AppComponent', () => {
         imports: [FormsModule],
         providers: [RegistrationDataService],
       }).compileComponents();
-    }),
+    })
   );
   it(
     'should create the app',
@@ -22,7 +22,7 @@ describe('AppComponent', () => {
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.debugElement.componentInstance;
       expect(app).toBeTruthy();
-    }),
+    })
   );
   it(
     `should have as title 'Registrations'`,
@@ -30,7 +30,7 @@ describe('AppComponent', () => {
       const fixture = TestBed.createComponent(AppComponent);
       const app = fixture.debugElement.componentInstance;
       expect(app.title).toEqual('Registrations');
-    }),
+    })
   );
   it(
     'should render title in a h1 tag',
@@ -39,8 +39,8 @@ describe('AppComponent', () => {
       fixture.detectChanges();
       const compiled = fixture.debugElement.nativeElement;
       expect(compiled.querySelector('h1').textContent).toContain(
-        'Event Registration Form',
+        'Event Registration Form'
       );
-    }),
+    })
   );
 });

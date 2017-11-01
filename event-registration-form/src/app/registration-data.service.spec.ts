@@ -15,7 +15,7 @@ describe('Service: RegistrationData', () => {
     'should be created',
     inject([RegistrationDataService], (service: RegistrationDataService) => {
       expect(service).toBeTruthy();
-    }),
+    })
   );
 
   it(
@@ -23,7 +23,7 @@ describe('Service: RegistrationData', () => {
     inject([RegistrationDataService], (service: RegistrationDataService) => {
       const result = service.getRegistrations();
       expect(result).toBeTruthy();
-    }),
+    })
   );
 
   it(
@@ -38,7 +38,7 @@ describe('Service: RegistrationData', () => {
       service.addRegistration(testEntry);
       const registrations = service.getRegistrations();
       expect(registrations).toEqual(new Array<Registration>(testEntry));
-    }),
+    })
   );
 
   xit(
@@ -56,7 +56,7 @@ describe('Service: RegistrationData', () => {
         const dataBeforeRestart = service.getRegistrations();
         // restart application/service
         expect(service.getRegistrations()).toEqual(dataBeforeRestart);
-      },
-    ),
+      }
+    )
   );
 });
