@@ -1,0 +1,20 @@
+<div>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nimi</th>
+      <th>Email</th>
+      <th>Ruokavalinta</th>
+      <th>Saunailta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let registration of registrations; index as registrationIndex">
+      <td>{{ registrationIndex + 1 }}</td>
+      <td>{{ registration.name }}</td>
+      <td>{{ registration.email }}</td>
+      <td>{{ registration.foodChoice }}</td>
+      <td>{{ registration.goingToSauna }}</td>
+    </tr>
+  </tbody>
+</div>
