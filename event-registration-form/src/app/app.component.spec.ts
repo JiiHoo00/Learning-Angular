@@ -1,17 +1,27 @@
 import { TestBed, async } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AppComponent } from './app.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { RegistrationListComponent } from './registration-list/registration-list.component';
+import { BooleanToTextPipe } from './BooleanToText.pipe';
 
 import { RegistrationDataService } from './registration-data.service';
+
+import { AppRoutingModule } from './app-routing.module';
 
 describe('AppComponent', () => {
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [AppComponent, RegistrationFormComponent],
-        imports: [FormsModule],
+        declarations: [
+          AppComponent,
+          RegistrationFormComponent,
+          RegistrationListComponent,
+          BooleanToTextPipe,
+        ],
+        imports: [FormsModule, AppRoutingModule, RouterTestingModule],
         providers: [RegistrationDataService],
       }).compileComponents();
     })
