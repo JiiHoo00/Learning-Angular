@@ -6,5 +6,5 @@ Front was created with angularCLI and then only changed these files in the front
 - app.component.html
 - app.module.ts
 
-Backend is only package.json, which bring in express and multer (for file uploading)
+Backend is only package.json, which brings in express and multer (for file uploading)
 and app.js for the code.
